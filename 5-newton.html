@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Newton</title>
+	
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/math/mathquill.css" />
+	<link rel="stylesheet" href="assets/math/matheditor.css" />
+</head>
+
+<body class="is-preload">
+
+	<div id="content">
+
+		
+
+		<div class="inner">
+
+			<div align="center">
+				<header style="font-size: 70px;font-weight: 700px; color: #000000;">Newton Method</header>
+				<div id="errormsg"></div>
+				<table class="input" align="center" style="color: #000000;">
+					<thead>
+						<tr>
+							<div id="mathfield" style="width:50%;"></div>
+							<div id="hidden" style="display:none;"></div>
+						</tr>
+					</thead>
+					<tbody style="background-color: #699AB1;">
+						<tr>
+							<td>X₀ = <input  id="x0" ></td>
+							<td>Max iterations = <input  id="maxiter" ></td>
+
+						</tr>
+						<tr style="background-color: #699AB1;">
+							<td>Error = <input type="text" id="eps" ></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<button id="demo" onclick="x(mE.getValue()); clrtab(); newton(x0.value, eps.value);">Calculate</button>
+			</div>
+
+			<br>
+			<div style="text-align: center; font-weight: bold; color: #000000; background-color: #699AB1; padding: 0.75em 1em 0.75em 1em;"> Derivative = <span id="derv" style="font-weight:bold;color: #c94663;"></span> </div>
+
+			<table class="output" align="center" id="disp"  style="color: #000000;background-color: #AFD6C3;">
+				<thead>
+					<tr>
+						<th>i</th>
+						<th>Xi</th>
+						<th>f(Xi)</th>
+						<th>f'(Xi)</th>	
+						<th>Error%</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="text-align: center; font-weight: bold; color: #000000; background-color: #699AB1; padding: 0.75em 1em 0.75em 1em;">Root = <label id="root"></label></div>
+	</div>
+
+	</div>
+
+
+
+	
+
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/math.js"></script>
+	<script src="assets/math/latex-to-js.js"></script>
+	<script src="assets/math/mathquill.js"></script>
+	<script src="assets/math/matheditor.js"></script>
+	<script> //Work-around for Chrome CORS support
+		var mE = new MathEditor('mathfield');
+
+		function x(x) {
+			var span = document.getElementById('hidden');
+			z = latex_to_js(x);
+			span.innerHTML = z;
+			return x;
+		}	
+	</script>
+
+</body>
+
+</html>
